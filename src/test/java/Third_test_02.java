@@ -26,13 +26,14 @@ public class Third_test_02 {
         //- Откройте https://the-internet.herokuapp.com/drag_and_drop
         open("https://the-internet.herokuapp.com/drag_and_drop");
         //- Перенесите прямоугольник А на место В
-        Selenide.actions("#column-a").clickAndHold().moveToElement($("#column-b")).perform();
+
+        Selenide.actions().clickAndHold($("#column-a")).moveToElement($("#column-b"),100,0).release().perform();
+        //Selenide.actions().clickAndHold($("#column-a")).moveToElement($("#column-b")).release().perform();
         //Selenide.actions(clickAndHold($("#column-a")).moveByOffset(300,0).release().perform();
-        $("#column-a").dragAndDropTo($("#column-b"));
+        //$("#column-a").dragAndDropTo($("#column-b"));
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
         //- Проверьте, что прямоугольники действительно поменялись
-
         //P.S. В Selenide есть команда $(element).dragAndDrop($(to-element)),
         // проверьте работает ли тест, если использовать её вместо actions()
 
